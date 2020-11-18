@@ -31,3 +31,30 @@ background-color: rgba(255, 245, 245, 0.568);
     border-style: dotted;
     background-color: rgba(255, 245, 245, 0.568);
     }
+
+/*--------------------------------------------------------------
+# Back to top button
+--------------------------------------------------------------*/
+.back-to-top {
+    position: fixed;
+    /* display: none; */
+    width: 40px;
+    height: 40px;
+    right: 40px;
+    bottom: 25px;
+    color: black;
+    transition: display 0.5s ease-in-out;
+    z-index: 99999;
+  }
+  
+  .back-to-top i {
+    font-size: 50px !important;
+    position: absolute !important;
+    top: 7px;
+    left: 8px;
+  }
+  
+  .back-to-top:hover {
+    color: rgb(78, 77, 77);
+    transition: background 0.2s ease-in-out;
+  }

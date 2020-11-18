@@ -22,6 +22,8 @@ require_once('model.php');
     </script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/d69db61c7b.js" crossorigin="anonymous"></script>
 </head>
 
 
@@ -45,4 +47,5 @@ require_once('model.php');
                         </tbody>
                 </table>
         </div>
+        <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
 </main>

@@ -22,6 +22,8 @@ require_once('model.php');
     </script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/d69db61c7b.js" crossorigin="anonymous"></script>
 </head>
 <a href="index.php"> <button type="button" class="admin btn btn-success ml-5 my-5">Retour</button></a>
 
@@ -53,5 +55,6 @@ require_once('model.php');
                     ?>
         <section class="col-12" id=historique>
         </section>
+        <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
     </div>
 </div>
