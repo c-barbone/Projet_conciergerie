@@ -1,5 +1,7 @@
 <?php
-include('functions.php'); 
+require_once('model.php');
+// include('headerview.php');
+// include('footerview.php');
 ?>
 
 </html>
@@ -10,6 +12,7 @@ include('functions.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, target-densitydpi=device-dpi" />
     <title>Conciergerie</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -21,14 +24,20 @@ include('functions.php');
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
     </script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
     <div class="container">
-        <div class="row">
-            <section class="col-12">
-                <h1 class="d-flex justify-content-center mb-5">Conciergerie</h1>
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <h1 class="d-flex justify-content-center mb-5 titre">Conciergerie</h1>
+                <center><a href="historiqueview"> <button type="button" class="admin btn btn-success mb-5">Historique</button></a>
+                <a href="listview.php"> <button type="button" class="admin btn btn-success mb-5">Liste des interventions</button></a></center>
+            </div>
+            <div class="col-6 pr-5 inter">
                 <h3 class="d-flex justify-content-center">Ajouter une intervention</h3>
                 <form name="ajout" method="GET">
                     <div class="form-group pt-3">
@@ -47,41 +56,14 @@ include('functions.php');
                     </div>
                     <button class="btn btn-success" type="submit" name="validation" value="OK">Valider</button>
                 </form>
-                        <?php
+                <?php
                         intervention();
                         ?>
-                <h3 class="d-flex justify-content-center">Historique des interventions</h3>
-                <form name="historiqued" method="GET">
-                    <div class="form-group pt-5 mt-5">
-                        <label for="floor">Historique des interventions par étage</label>
-                        <?php
-                            floorDisplay();
-                            ?>
-                        <button class="btn btn-success mt-3" type="submit" name="validation" value="historiquee"
-                        onclick='window.location.hash="historique";'>Valider</button>
-                    </div>
-                </form>
-                <form name="historiqued" method="GET">
-                    <div class="form-group">
-                        <label for="floor">Historique des interventions par date</label>
-                        <?php
-                            dateDisplay();
-                            ?>
-                        <button class="btn btn-success mt-3" type="submit" name="validation" value="historiqued"
-                            onclick='window.location.hash="historique";'>Valider</button>
-
-                    </div>
-                </form>
-                    <?php
-                    historiquee();
-                    historiqued();
-                    ?>
-                <section class="col-12" id=historique>
-                </section>
-            </section>
+            </div>
+            
+            
         </div>
     </div>
 
 </body>
 
-</html>

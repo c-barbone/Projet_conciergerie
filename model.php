@@ -161,4 +161,22 @@ function historiqued(){
 
 
 
+function listei(){
+	$db=connect();
+	$sql='SELECT * FROM `intervention` ORDER BY `Date_Intervention` desc';
+	$query=$db->prepare($sql);
+	$query->execute();
+	$reply = $query->fetchAll(PDO::FETCH_ASSOC);
+
+	foreach($reply as $product){
+		echo "<tr>
+        <td>".$product['Type_Intervention']."</td>
+        <td>".$product['Floor_Intervention']."</td>
+		<td>".$product['Date_Intervention']."</td>
+		<td><a href='index.php'> <button type='button' class='admin btn btn-success'>Modifier</button>
+        </tr>";
+	}
+
+}
+
 ?>

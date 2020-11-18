@@ -1,0 +1,33 @@
+body {
+    background: linear-gradient(180deg, #dddcdd 0%, #464345c9 100%);
+    font-family: 'Cutive Mono', monospace !important;
+}
+
+.titre {
+    color: black;
+    font-size: 70px;
+    font-family: 'Cutive Mono', monospace;
+}
+
+.btn-success{
+    background: black !important;
+    border-color: rgba(0, 0, 0, 0.603) grey !important;
+}
+.btn-success:hover{
+    background: grey !important;
+}
+
+
+.titrePost {
+    margin-top : 30px;
+}
+
+.inter{
+border-style: dotted;
+background-color: rgba(255, 245, 245, 0.568);
+}
+
+.histo{
+    border-style: dotted;
+    background-color: rgba(255, 245, 245, 0.568);
+    }
