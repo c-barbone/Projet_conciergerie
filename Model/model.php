@@ -38,9 +38,9 @@ function intervention(){
 				if($validation)
 				{
 					echo"L'intervention a bien été ajoutée";
-					echo '<script language="Javascript">
-					document.location.replace("index.php");
-					</script>';
+					$delai=1; 
+    				$url='http://localhost/projet_concierge/index.php';
+    				header("Refresh: $delai;url=$url");
 				}
 
 				else
@@ -78,11 +78,11 @@ function floorDisplay(){
  *
  * return void
  */
-function historiquee(){
+function historicale(){
 	if (isset($_GET['validation'])&& $_GET['validation']=="historiquee"){
 		$db=connect();
 		$floor = $_GET['id'];
-		$recup= $db->prepare('SELECT * FROM intervention WHERE Floor_Intervention="'.$floor.'"');
+		$recup= $db->prepare('SELECT * FROM intervention WHERE Floor_Intervention="'.$floor.'" ORDER BY Date_Intervention desc');
 		$recup->execute();
 		echo '<div class="container my-5">
 		<h2 class=" text-center py-5"> Historique de l\'étage '.$floor.'</h2>
@@ -132,7 +132,7 @@ function dateDisplay(){
  *
  * return void
  */
-function historiqued(){
+function historicald(){
 	if (isset($_GET['validation'])&& $_GET['validation']=="historiqued"){
 		$db=connect();
 		$date = $_GET['id'];
@@ -161,6 +161,11 @@ function historiqued(){
 
 
 
+/**
+ * listei
+ *
+ * return void
+ */
 function listei(){
 	$db=connect();
 	$sql='SELECT * FROM `intervention` ORDER BY `Date_Intervention` desc';
@@ -169,14 +174,71 @@ function listei(){
 	$reply = $query->fetchAll(PDO::FETCH_ASSOC);
 
 	foreach($reply as $product){
-		echo "<tr>
-        <td>".$product['Type_Intervention']."</td>
-        <td>".$product['Floor_Intervention']."</td>
-		<td>".$product['Date_Intervention']."</td>
-		<td><a href='index.php'> <button type='button' class='admin btn btn-success'>Modifier</button>
-        </tr>";
+		echo '<tr>
+		<td><input type="text" name="idsupr" value='.$product['Id_Intervention'].'></td>
+        <td>'.$product['Type_Intervention'].'</td>
+        <td>'.$product['Floor_Intervention'].'</td>
+		<td>'.$product['Date_Intervention'].'</td>
+		<td><form method="GET"><button type="submit" class="btn btn-success" value="edit" name="edit">Modifier</button></form></td>
+        </tr>';
 	}
 
+	$sql='SELECT * FROM `intervention`';
+	$query=$db->prepare($sql);
+	$query->execute();
+	$reply = $query->fetchAll(PDO::FETCH_ASSOC);
+	if(isset($_GET['edit'])&& $_GET['edit']=='edit'){
+		echo '<form method="GET">
+		<div class="form-row align-items-center">
+		<div class="col-sm-3 my-1">
+			<label class="sr-only" for="type">Type</label>
+			<input type="text" id="type" name="id" class="form-control" placeholder="'.$product['Id_Intervention'].'">
+		  </div>
+		  <div class="col-sm-3 my-1">
+			<label class="sr-only" for="type">Type</label>
+			<input type="text" id="type" name="type" class="form-control" placeholder="'.$product['Type_Intervention'].'">
+		  </div>
+		  <div class="col-sm-3 my-1">
+			<label class="sr-only" for="floor">Etage</label>
+			<input type="text" id="type" name="floor" class="form-control" placeholder="'.$product['Floor_Intervention'].'">
+		  </div>
+		  <div class="col-sm-3 my-1">
+			<label class="sr-only" for="date">Date</label>
+			<input type="date" id="type" name="date" class="form-control" placeholder="'.$product['Date_Intervention'].'">
+		  </div>
+		  <div class="col-auto my-1">
+			<button type="submit" class="btn btn-success" name="edit1" value="edit1">Valider</button>
+		  </div>
+		</div>
+	  </form>';
+}		
 }
 
+/**
+ * edit
+ *
+ * return void
+ */
+function edit(){
+	$db=connect();
+	if(isset($_GET['edit1']) && !empty($_GET['id']) && !empty($_GET['type']) && !empty($_GET['floor']) && !empty($_GET['date'])){
+	
+	$edit_task= $db->prepare('UPDATE `intervention` SET `Type_Intervention`=:type_, `Floor_Intervention`=:floor_, `Date_Intervention`=:date_ WHERE Id_Intervention=:id');
+    $edit_task->bindParam(':id',$_GET['id'], PDO::PARAM_INT);
+    $edit_task->bindParam(':type_',$_GET['type'], PDO::PARAM_STR);
+    $edit_task->bindParam(':floor_',$_GET['floor'], PDO::PARAM_INT);
+    $edit_task->bindParam(':date_',$_GET['date'], PDO::PARAM_STR);
+
+    $edit_task= $edit_task->execute();
+
+     if($edit_task){
+		 echo 'Votre enregistrement à bien été modifié.';
+		 		$delai=1; 
+    			$url='http://localhost/projet_concierge/View/listview.php';
+    			header("Refresh: $delai;url=$url");
+     } else {
+         echo 'Veuillez recommencer svp.';
+     }
+}
+}
 ?>

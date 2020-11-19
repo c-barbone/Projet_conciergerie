@@ -1,14 +1,14 @@
 <?php
-require_once('model.php');
-// include('headerview.php');
-// include('footerview.php');
+require_once('../Model/model.php');
+// include('Public/header.php');
+// include('Public/footer.php');
 ?>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, target-densitydpi=device-dpi" />
     <title>Conciergerie</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../Public/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -33,16 +33,19 @@ require_once('model.php');
         <div class="row">
             <section class="col-12">
                 <h2 class="d-flex justify-content-center mt-2">Liste des interventions</h2><br />
-                <a href="index.php"> <button type="button" class="admin btn btn-success mb-3">Retour accueil</button></a>
+                <a href="../index.php"> <button type="button" class="admin btn btn-success mb-3">Retour accueil</button></a>
                 <table class="table">
                     <thead>
+                        <th class="id" data-class='hidden'>Id</th>
                         <th>Type d'intervention</th>
                         <th>Etage</th>
                         <th>Date</th>
                     </thead>
                     <tbody>
                         <?php
+                        edit();
                         listei();
+                        
                         ?>
                         </tbody>
                 </table>

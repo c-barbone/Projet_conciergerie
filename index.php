@@ -1,7 +1,7 @@
 <?php
-require_once('model.php');
-// include('headerview.php');
-// include('footerview.php');
+require_once('Model/model.php');
+// include('Public/header.php');
+// include('Public/footer.php');
 ?>
 
 </html>
@@ -12,7 +12,7 @@ require_once('model.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, target-densitydpi=device-dpi" />
     <title>Conciergerie</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Public/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -34,8 +34,8 @@ require_once('model.php');
         <div class="row justify-content-center">
             <div class="col-12">
                 <h1 class="d-flex justify-content-center mb-5 titre">Conciergerie</h1>
-                <center><a href="historiqueview"> <button type="button" class="admin btn btn-success mb-5">Historique</button></a>
-                <a href="listview.php"> <button type="button" class="admin btn btn-success mb-5">Liste des interventions</button></a></center>
+                <center><a href="View/historiqueview"> <button type="button" class="admin btn btn-success mb-5">Historique</button></a>
+                <a href="View/listview.php"> <button type="button" class="admin btn btn-success mb-5">Liste des interventions</button></a></center>
             </div>
             <div class="col-6 pr-5 inter">
                 <h3 class="d-flex justify-content-center">Ajouter une intervention</h3>
@@ -64,5 +64,6 @@ require_once('model.php');
             
         </div>
     </div>
+</html>
 </body>
 
