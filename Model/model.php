@@ -177,11 +177,11 @@ function listei(){
 
 	foreach($reply as $product){
 		echo '<form method="GET"><tr>
-		<td><input type="text" name="idedit" value='.$product['Id_Intervention'].'></td>
+		<td><input type="hidden" name="idedit" value='.$product['Id_Intervention'].'></td>
         <td>'.$product['Type_Intervention'].'</td>
         <td>'.$product['Floor_Intervention'].'</td>
 		<td>'.$product['Date_Intervention'].'</td>
-		<td><button type="submit" class="btn btn-success" value="edit" name="edit">Modifier</button></td>
+		<td><button type="submit" class="btn btn-secondary" value="edit" name="edit">Modifier</button></td>
         </tr></form>';
 	}
 	if(isset($_GET['edit'])&& $_GET['edit']=='edit'){
@@ -192,9 +192,9 @@ function listei(){
 	
 		echo '<form method="GET">
 		<div class="form-row align-items-center">
-		<div class="col-sm-3 my-1">
+		<div class="my-1">
 			<label class="sr-only" for="type">Type</label>
-			<input type="text" id="type" name="id" class="form-control" value="'.$reply['Id_Intervention'].'">
+			<input type="hidden" id="type" name="id" class="form-control" value="'.$reply['Id_Intervention'].'">
 		  </div>
 		  <div class="col-sm-3 my-1">
 			<label class="sr-only" for="type">Type</label>
@@ -208,8 +208,8 @@ function listei(){
 			<label class="sr-only" for="date">Date</label>
 			<input type="text" id="type" name="date" class="form-control" value="'.$reply['Date_Intervention'].'">
 		  </div>
-		  <div class="col-auto my-1">
-			<button type="submit" class="btn btn-success" name="edit1" value="edit1">Valider</button>
+		  <div class="col-3 my-1">
+			<button type="submit" class="btn btn-secondary" name="edit1" value="edit1">Valider</button>
 		  </div>
 		</div>
 	  </form>';

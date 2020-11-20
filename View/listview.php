@@ -33,10 +33,10 @@ require_once('../Model/model.php');
         <div class="row">
             <section class="col-12">
                 <h2 class="d-flex justify-content-center mt-2">Liste des interventions</h2><br />
-                <a href="../index.php"> <button type="button" class="admin btn btn-success mb-3">Retour accueil</button></a>
+                <a href="../index.php"> <button type="button" class="admin btn btn-secondary mb-3">Retour accueil</button></a>
                 <table class="table">
                     <thead>
-                        <th class="id" data-class='hidden'>Id</th>
+                        <th><input type="hidden" value="Id"></th>
                         <th>Type d'intervention</th>
                         <th>Etage</th>
                         <th>Date</th>

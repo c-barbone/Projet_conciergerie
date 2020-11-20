@@ -25,7 +25,7 @@ require_once('../Model/model.php');
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/d69db61c7b.js" crossorigin="anonymous"></script>
 </head>
-<a href="../index.php"> <button type="button" class="admin btn btn-success ml-5 my-5">Retour</button></a>
+<a href="../index.php"> <button type="button" class="admin btn btn-secondary ml-5 my-5">Retour</button></a>
 
 
 <div class="container">

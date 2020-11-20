@@ -34,8 +34,8 @@ require_once('Model/model.php');
         <div class="row justify-content-center">
             <div class="col-12">
                 <h1 class="d-flex justify-content-center mb-5 titre">Conciergerie</h1>
-                <center><a href="View/historiqueview"> <button type="button" class="admin btn btn-success mb-5">Historique</button></a>
-                <a href="View/listview.php"> <button type="button" class="admin btn btn-success mb-5">Liste des interventions</button></a></center>
+                <center><a href="View/historiqueview"> <button type="button" class="admin btn btn-secondary mb-5">Historique</button></a>
+                <a href="View/listview.php"> <button type="button" class="admin btn btn-secondary mb-5">Liste des interventions</button></a></center>
             </div>
             <div class="col-6 pr-5 inter">
                 <h3 class="d-flex justify-content-center">Ajouter une intervention</h3>
