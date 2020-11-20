@@ -38,7 +38,7 @@ require_once('../Model/model.php');
                     <?php
                             floorDisplay();
                             ?>
-                    <button class="btn btn-success mt-3" type="submit" name="validation" value="historiquee"
+                    <button class="btn btn-secondary mt-3" type="submit" name="validation" value="historiquee"
                         onclick='window.location.hash="historique";'>Valider</button>
                 </div>
             </form>
@@ -48,7 +48,7 @@ require_once('../Model/model.php');
                     <?php
                             dateDisplay();
                             ?>
-                    <button class="btn btn-success mt-3" type="submit" name="validation" value="historiqued"
+                    <button class="btn btn-secondary mt-3" type="submit" name="validation" value="historiqued"
                         onclick='window.location.hash="historique";'>Valider</button>
                 </div>
             </form>

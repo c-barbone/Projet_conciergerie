@@ -61,7 +61,8 @@ function floorDisplay(){
 
 	$db=connect();
 	
-	$answer=$db->query('SELECT Floor_Intervention FROM intervention GROUP BY Floor_Intervention');
+	$answer=$db->prepare('SELECT Floor_Intervention FROM intervention GROUP BY Floor_Intervention');
+	$answer->execute();
 	echo'<select class="custom-select " name="id">';
     echo'<option value="NULL">Choisir l\'étage</option>';
 	while ($data = $answer->fetch()) {
@@ -116,7 +117,8 @@ function dateDisplay(){
 
 	$db=connect();
 	
-	$answer=$db->query( 'SELECT * FROM intervention GROUP BY Date_Intervention');
+	$answer=$db->prepare( 'SELECT * FROM intervention GROUP BY Date_Intervention');
+	$answer->execute();
 	echo'<select class="custom-select " name="id">';
 	echo'<option value="NULL">Choisir la date</option>';
 	while ($data = $answer->fetch()) {
@@ -174,37 +176,37 @@ function listei(){
 	$reply = $query->fetchAll(PDO::FETCH_ASSOC);
 
 	foreach($reply as $product){
-		echo '<tr>
-		<td><input type="text" name="idsupr" value='.$product['Id_Intervention'].'></td>
+		echo '<form method="GET"><tr>
+		<td><input type="text" name="idedit" value='.$product['Id_Intervention'].'></td>
         <td>'.$product['Type_Intervention'].'</td>
         <td>'.$product['Floor_Intervention'].'</td>
 		<td>'.$product['Date_Intervention'].'</td>
-		<td><form method="GET"><button type="submit" class="btn btn-success" value="edit" name="edit">Modifier</button></form></td>
-        </tr>';
+		<td><button type="submit" class="btn btn-success" value="edit" name="edit">Modifier</button></td>
+        </tr></form>';
 	}
-
-	$sql='SELECT * FROM `intervention`';
+	if(isset($_GET['edit'])&& $_GET['edit']=='edit'){
+	$sql='SELECT * FROM `intervention`WHERE Id_Intervention='.$_GET['idedit'].'';
 	$query=$db->prepare($sql);
 	$query->execute();
-	$reply = $query->fetchAll(PDO::FETCH_ASSOC);
-	if(isset($_GET['edit'])&& $_GET['edit']=='edit'){
+	$reply = $query->fetch(PDO::FETCH_ASSOC);
+	
 		echo '<form method="GET">
 		<div class="form-row align-items-center">
 		<div class="col-sm-3 my-1">
 			<label class="sr-only" for="type">Type</label>
-			<input type="text" id="type" name="id" class="form-control" placeholder="'.$product['Id_Intervention'].'">
+			<input type="text" id="type" name="id" class="form-control" value="'.$reply['Id_Intervention'].'">
 		  </div>
 		  <div class="col-sm-3 my-1">
 			<label class="sr-only" for="type">Type</label>
-			<input type="text" id="type" name="type" class="form-control" placeholder="'.$product['Type_Intervention'].'">
+			<input type="text" id="type" name="type" class="form-control" value="'.$reply['Type_Intervention'].'">
 		  </div>
 		  <div class="col-sm-3 my-1">
 			<label class="sr-only" for="floor">Etage</label>
-			<input type="text" id="type" name="floor" class="form-control" placeholder="'.$product['Floor_Intervention'].'">
+			<input type="text" id="type" name="floor" class="form-control" value="'.$reply['Floor_Intervention'].'">
 		  </div>
 		  <div class="col-sm-3 my-1">
 			<label class="sr-only" for="date">Date</label>
-			<input type="date" id="type" name="date" class="form-control" placeholder="'.$product['Date_Intervention'].'">
+			<input type="text" id="type" name="date" class="form-control" value="'.$reply['Date_Intervention'].'">
 		  </div>
 		  <div class="col-auto my-1">
 			<button type="submit" class="btn btn-success" name="edit1" value="edit1">Valider</button>

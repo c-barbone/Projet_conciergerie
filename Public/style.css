@@ -9,11 +9,11 @@ body {
     font-family: 'Cutive Mono', monospace;
 }
 
-.btn-success{
+.btn-secondary{
     background: black !important;
     border-color: rgba(0, 0, 0, 0.603) grey !important;
 }
-.btn-success:hover{
+.btn-secondary:hover{
     background: grey !important;
 }
 

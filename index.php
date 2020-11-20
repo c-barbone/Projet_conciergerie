@@ -54,7 +54,7 @@ require_once('Model/model.php');
                         <label for="date">Date de l'intervention</label>
                         <input type="date" id="date" name="date" class="form-control">
                     </div>
-                    <button class="btn btn-success" type="submit" name="validation" value="OK">Valider</button>
+                    <button class="btn btn-secondary" type="submit" name="validation" value="OK">Valider</button>
                 </form>
                 <?php
                         intervention();
