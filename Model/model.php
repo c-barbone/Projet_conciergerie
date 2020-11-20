@@ -1,9 +1,7 @@
 <?php
-/**
- * connect
- *
- * return void
- */
+// =======================================================================================================
+    // <!-- database connection -->
+// =======================================================================================================
 function connect(){
 	try
 	{
@@ -18,11 +16,9 @@ function connect(){
 
 
 
-/**
- * intervention
- *
- * return void
- */
+// =======================================================================================================
+    // <!-- add intervention -->
+// =======================================================================================================
 function intervention(){
 
 	$db=connect();
@@ -52,11 +48,9 @@ function intervention(){
 
 
 
-/**
- * floorDisplay
- *
- * return void
- */
+// =======================================================================================================
+    // <!-- floor display -->
+// =======================================================================================================
 function floorDisplay(){
 
 	$db=connect();
@@ -74,11 +68,9 @@ function floorDisplay(){
 
 
 
-/**
- * historiquee
- *
- * return void
- */
+// =======================================================================================================
+    // <!-- history by floor -->
+// =======================================================================================================
 function historicale(){
 	if (isset($_GET['validation'])&& $_GET['validation']=="historiquee"){
 		$db=connect();
@@ -108,11 +100,9 @@ function historicale(){
 
 
 
-/**
- * dateDisplay
- *
- * return void
- */
+// =======================================================================================================
+    // <!-- date display -->
+// =======================================================================================================
 function dateDisplay(){
 
 	$db=connect();
@@ -129,11 +119,9 @@ function dateDisplay(){
 
 
 
-/**
- * historiqued
- *
- * return void
- */
+// =======================================================================================================
+    // <!-- history by date -->
+// =======================================================================================================
 function historicald(){
 	if (isset($_GET['validation'])&& $_GET['validation']=="historiqued"){
 		$db=connect();
@@ -163,11 +151,9 @@ function historicald(){
 
 
 
-/**
- * listei
- *
- * return void
- */
+// =======================================================================================================
+    // <!-- listing intervention -->
+// =======================================================================================================
 function listei(){
 	$db=connect();
 	$sql='SELECT * FROM `intervention` ORDER BY `Date_Intervention` desc';
@@ -216,11 +202,9 @@ function listei(){
 }		
 }
 
-/**
- * edit
- *
- * return void
- */
+/// =======================================================================================================
+    // <!-- add intervention -->
+// =======================================================================================================
 function edit(){
 	$db=connect();
 	if(isset($_GET['edit1']) && !empty($_GET['id']) && !empty($_GET['type']) && !empty($_GET['floor']) && !empty($_GET['date'])){
@@ -236,7 +220,7 @@ function edit(){
      if($edit_task){
 		 echo 'Votre enregistrement à bien été modifié.';
 		 		$delai=1; 
-    			$url='http://localhost/projet_concierge/View/listview.php';
+    			$url='http://localhost/projet_concierge/View/listingview.php';
     			header("Refresh: $delai;url=$url");
      } else {
          echo 'Veuillez recommencer svp.';
