@@ -107,7 +107,7 @@ function dateDisplay(){
 
 	$db=connect();
 	
-	$answer=$db->prepare( 'SELECT * FROM intervention GROUP BY Date_Intervention');
+	$answer=$db->prepare( 'SELECT * FROM intervention GROUP BY Date_Intervention ORDER BY `Date_Intervention` desc');
 	$answer->execute();
 	echo'<select class="custom-select " name="id">';
 	echo'<option value="NULL">Choisir la date</option>';
