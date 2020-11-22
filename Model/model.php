@@ -126,7 +126,7 @@ function historicald(){
 	if (isset($_GET['validation'])&& $_GET['validation']=="historiqued"){
 		$db=connect();
 		$date = $_GET['id'];
-		$recup= $db->prepare('SELECT * FROM intervention WHERE Date_Intervention="'.$date.'" ORDER BY `Floor_Intervention` asc');
+		$recup= $db->prepare('SELECT * FROM intervention WHERE Date_Intervention="'.$date.'" ORDER BY Floor_Intervention asc');
 		$recup->execute();
 		echo '<div class="container my-5">
 		<h2 class=" text-center py-5"> Historique du '.$date.'</h2>
