@@ -5,8 +5,8 @@
                 <center><a href="View/historicalview.php"> <button type="button" class="admin btn btn-secondary mb-5">Historique</button></a>
                 <a href="View/listingview.php"> <button type="button" class="admin btn btn-secondary mb-5">Liste des interventions</button></a></center>
             </div>
-            <div class="col-6 pr-5 inter">
-                <h3 class="d-flex justify-content-center">Ajouter une intervention</h3>
+            <div class="col-12 col-lg-6 pr-5 inter">
+                <h3 class="d-flex justify-content-center text-center">Ajouter une intervention</h3>
                 <form name="ajout" method="GET">
                     <div class="form-group pt-3">
                         <label for="type">Type d'intervention</label>

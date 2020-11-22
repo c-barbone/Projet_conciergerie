@@ -167,7 +167,7 @@ function listei(){
         <td>'.$product['Type_Intervention'].'</td>
         <td>'.$product['Floor_Intervention'].'</td>
 		<td>'.$product['Date_Intervention'].'</td>
-		<td></br><button type="submit" class="btn btn-secondary" value="edit" name="edit">Modifier</button></td>
+		<td><button type="submit" class="btn btn-secondary" value="edit" name="edit">Modifier</button></td>
         </tr></form>';
 	}
 	if(isset($_GET['edit'])&& $_GET['edit']=='edit'){
