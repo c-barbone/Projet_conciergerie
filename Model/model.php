@@ -21,11 +21,9 @@ function connect(){
 // =======================================================================================================
 function intervention(){
 
-	$db=connect();
-
 	if (isset($_GET['validation'])&& !empty($_GET['type'])&& !empty($_GET['floor'])&& !empty($_GET['date']))
 	{
-		$add=$db->prepare('INSERT INTO intervention(Type_Intervention, Floor_Intervention, Date_Intervention)
+		$add=connect()->prepare('INSERT INTO intervention(Type_Intervention, Floor_Intervention, Date_Intervention)
 		VALUE (:Type_Intervention,:Floor_Intervention,:Date_Intervention)');
 			$add->bindparam(':Type_Intervention',$_GET['type'],PDO::PARAM_STR);
 			$add->bindparam(':Floor_Intervention',$_GET['floor'],PDO::PARAM_INT);
@@ -52,10 +50,8 @@ function intervention(){
     // <!-- floor display -->
 // =======================================================================================================
 function floorDisplay(){
-
-	$db=connect();
 	
-	$answer=$db->prepare('SELECT Floor_Intervention FROM intervention GROUP BY Floor_Intervention');
+	$answer=connect()->prepare('SELECT Floor_Intervention FROM intervention GROUP BY Floor_Intervention');
 	$answer->execute();
 	echo'<select class="custom-select " name="id">';
     echo'<option value="NULL">Choisir l\'étage</option>';
@@ -73,9 +69,9 @@ function floorDisplay(){
 // =======================================================================================================
 function historicale(){
 	if (isset($_GET['validation'])&& $_GET['validation']=="historiquee"){
-		$db=connect();
+		
 		$floor = $_GET['id'];
-		$recup= $db->prepare('SELECT * FROM intervention WHERE Floor_Intervention="'.$floor.'" ORDER BY Date_Intervention desc');
+		$recup= connect()->prepare('SELECT * FROM intervention WHERE Floor_Intervention="'.$floor.'" ORDER BY Date_Intervention desc');
 		$recup->execute();
 		echo '<div class="container my-5">
 		<h2 class=" text-center py-5"> Historique de l\'étage '.$floor.'</h2>
@@ -104,10 +100,8 @@ function historicale(){
     // <!-- date display -->
 // =======================================================================================================
 function dateDisplay(){
-
-	$db=connect();
 	
-	$answer=$db->prepare( 'SELECT * FROM intervention GROUP BY Date_Intervention ORDER BY Date_Intervention desc');
+	$answer=connect()->prepare( 'SELECT * FROM intervention GROUP BY Date_Intervention ORDER BY Date_Intervention desc');
 	$answer->execute();
 	echo'<select class="custom-select " name="id">';
 	echo'<option value="NULL">Choisir la date</option>';
@@ -124,9 +118,9 @@ function dateDisplay(){
 // =======================================================================================================
 function historicald(){
 	if (isset($_GET['validation'])&& $_GET['validation']=="historiqued"){
-		$db=connect();
+
 		$date = $_GET['id'];
-		$recup= $db->prepare('SELECT * FROM intervention WHERE Date_Intervention="'.$date.'" ORDER BY Floor_Intervention asc');
+		$recup= connect()->prepare('SELECT * FROM intervention WHERE Date_Intervention="'.$date.'" ORDER BY Floor_Intervention asc');
 		$recup->execute();
 		echo '<div class="container my-5">
 		<h2 class=" text-center py-5"> Historique du '.$date.'</h2>
@@ -155,9 +149,9 @@ function historicald(){
     // <!-- listing intervention -->
 // =======================================================================================================
 function listei(){
-	$db=connect();
+	
 	$sql='SELECT * FROM `intervention` ORDER BY `Date_Intervention` desc';
-	$query=$db->prepare($sql);
+	$query=connect()->prepare($sql);
 	$query->execute();
 	$reply = $query->fetchAll(PDO::FETCH_ASSOC);
 
@@ -167,12 +161,12 @@ function listei(){
         <td>'.$product['Type_Intervention'].'</td>
         <td>'.$product['Floor_Intervention'].'</td>
 		<td>'.$product['Date_Intervention'].'</td>
-		<td></br><button type="submit" class="btn btn-secondary" value="edit" name="edit">Modifier</button></td>
+		<td><button type="submit" class="btn btn-secondary" value="edit" name="edit">Modifier</button></td>
         </tr></form>';
 	}
 	if(isset($_GET['edit'])&& $_GET['edit']=='edit'){
 	$sql='SELECT * FROM `intervention`WHERE Id_Intervention='.$_GET['idedit'].'';
-	$query=$db->prepare($sql);
+	$query=connect()->prepare($sql);
 	$query->execute();
 	$reply = $query->fetch(PDO::FETCH_ASSOC);
 	
@@ -192,7 +186,7 @@ function listei(){
 		  </div>
 		  <div class="col-sm-3 my-1">
 			<label class="sr-only" for="date">Date</label>
-			<input type="text" id="type" name="date" class="form-control" value="'.$reply['Date_Intervention'].'">
+			<input type="date" id="type" name="date" class="form-control" value="'.$reply['Date_Intervention'].'">
 		  </div>
 		  <div class="col-3 my-1">
 			<button type="submit" class="btn btn-secondary" name="edit1" value="edit1">Valider</button>
@@ -206,10 +200,10 @@ function listei(){
     // <!-- add intervention -->
 // =======================================================================================================
 function edit(){
-	$db=connect();
+	
 	if(isset($_GET['edit1']) && !empty($_GET['id']) && !empty($_GET['type']) && !empty($_GET['floor']) && !empty($_GET['date'])){
 	
-	$edit_task= $db->prepare('UPDATE `intervention` SET `Type_Intervention`=:type_, `Floor_Intervention`=:floor_, `Date_Intervention`=:date_ WHERE Id_Intervention=:id');
+	$edit_task= connect()->prepare('UPDATE `intervention` SET `Type_Intervention`=:type_, `Floor_Intervention`=:floor_, `Date_Intervention`=:date_ WHERE Id_Intervention=:id');
     $edit_task->bindParam(':id',$_GET['id'], PDO::PARAM_INT);
     $edit_task->bindParam(':type_',$_GET['type'], PDO::PARAM_STR);
     $edit_task->bindParam(':floor_',$_GET['floor'], PDO::PARAM_INT);
